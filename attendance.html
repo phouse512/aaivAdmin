@@ -16,6 +16,19 @@
                         e.preventDefault();
                         displayModalEvents();
                     });
+
+                    $("#selectEvent").click(function(event){
+                        alert("hi");
+                    });
+
+                    $("#selectEvent").delegate("tr", "click", function(){
+                        if ($(".selectedEvent")[0]){
+                            $(".selectedEvent").removeClass('selectedEvent');
+                            $(this).addClass('selectedEvent');
+                        } else {
+                            $(this).addClass('selectedEvent');
+                        }
+                    });
                 });
             </script>
         </head>

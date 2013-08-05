@@ -4,7 +4,7 @@ function displayModalEvents(){
             type: 'GET',
             success: function(data, textStatus, xhr){
                   var events = data.getElementsByTagName("event");
-                  var modalHTML = '<table class ="table table-hover"> <thead> <tr> <th>#</th><th>Event</th><th>Date</th></tr></thead><tbody>';
+                  var modalHTML = '<table class ="table table-hover"> <thead> <tr> <th>#</th><th>Event</th><th>Date</th></tr></thead><tbody id="selectEvent">';
                   var current = 0;
 
                   for (var i=0;i<events.length; i++){
@@ -17,6 +17,20 @@ function displayModalEvents(){
                   modalHTML += '</tbody></table>';
 
                   $('#eventModalBody').html(modalHTML);
+
+                  $("#selectEvent").delegate("tr", "click", function(){
+                        if ($(".selectedEvent")[0]){
+                            $(".selectedEvent").removeClass('selectedEvent');
+                            $(this).children().addClass('selectedEvent');
+                            $(".hasRowSpan").removeClass('hasRowSpan');
+                            $(this).children().addClass('hasRowSpan');
+                        } else {
+                            $(this).children().addClass('selectedEvent');
+                            $(this).addClass('selectedEvent');
+                            $(this).children().addClass('hasRowSpan');
+
+                        }
+                  });
             },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus);
