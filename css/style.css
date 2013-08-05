@@ -1,0 +1,8 @@
+.centered {
+	text-align: center;
+}
+
+.selectedEvent {
+	background-color: E6E6F5;
+	border: 1px C8C8DD;
+}
