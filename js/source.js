@@ -19,16 +19,18 @@ function displayModalEvents(){
                   $('#eventModalBody').html(modalHTML);
 
                   $("#selectEvent").delegate("tr", "click", function(){
-                        if ($(".selectedEvent")[0]){
-                            $(".selectedEvent").removeClass('selectedEvent');
-                            $(this).children().addClass('selectedEvent');
-                            $(".hasRowSpan").removeClass('hasRowSpan');
-                            $(this).children().addClass('hasRowSpan');
+                        if ($(this).children(".selectedEvent")[0]) {
+                              $(".selectedEvent").removeClass('selectedEvent');
+                              $(".hasRowSpan").removeClass('hasRowSpan');   
+                        } else if ($(".selectedEvent")[0]){
+                              $(".selectedEvent").removeClass('selectedEvent');
+                              $(this).children().addClass('selectedEvent');
+                              $(".hasRowSpan").removeClass('hasRowSpan');
+                              $(this).children().addClass('hasRowSpan');
                         } else {
-                            $(this).children().addClass('selectedEvent');
-                            $(this).addClass('selectedEvent');
-                            $(this).children().addClass('hasRowSpan');
-
+                              $(this).children().addClass('selectedEvent');
+                              $(this).addClass('selectedEvent');
+                              $(this).children().addClass('hasRowSpan');
                         }
                   });
             },
