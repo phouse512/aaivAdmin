@@ -1,6 +1,6 @@
 function displayModalEvents(){
       $.ajax({
-            url: 'eventListModal.php',
+            url: 'script/eventListModal.php',
             type: 'GET',
             success: function(data, textStatus, xhr){
                   var events = data.getElementsByTagName("event");
@@ -8,10 +8,11 @@ function displayModalEvents(){
                   var current = 0;
 
                   for (var i=0;i<events.length; i++){
+                        event_ID = events[i].getElementsByTagName("event_id")[0].textContent;
                         name = events[i].getElementsByTagName("event_name")[0].textContent;
                         date = events[i].getElementsByTagName("event_date")[0].textContent;
                         current = i+1;
-                        modalHTML += '<tr><td>' + current + '</td><td>' + name + '</td><td>' + date + '</td></tr>';
+                        modalHTML += '<tr id="' + event_ID + '"><td>' + current + '</td><td>' + name + '</td><td>' + date + '</td></tr>';
                   }
 
                   modalHTML += '</tbody></table>';
@@ -25,6 +26,7 @@ function displayModalEvents(){
                         } else if ($(".selectedEvent")[0]){
                               $(".selectedEvent").removeClass('selectedEvent');
                               $(this).children().addClass('selectedEvent');
+                              $(this).addClass('selectedEvent');
                               $(".hasRowSpan").removeClass('hasRowSpan');
                               $(this).children().addClass('hasRowSpan');
                         } else {
@@ -37,7 +39,55 @@ function displayModalEvents(){
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus);
             }
+      });
+}
 
+function getAttendanceData(eventID){
+      $.ajax({
+            url: 'script/returnAttendance.php',
+            type: 'POST',
+            async: false,
+            data: ({eventID: eventID}),
+            success: function(data, textStatus, xhr){
+                  displayAttendance(data);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus);
+            }
             
       });
+}
+
+function selectEvent(){
+      var eventID = $("tr.selectedEvent").attr("id");
+      getAttendanceData(eventID);
+}
+
+function displayAttendance(xmlInfo){
+      var users = xmlInfo.getElementsByTagName("user");
+      var eventName = xmlInfo.getElementsByTagName("event_name")[0].textContent;
+      var eventDate = xmlInfo.getElementsByTagName("event_date")[0].textContent;
+      console.log(eventName);
+      console.log(users);
+
+      table = $("#eventTable");
+      header = $("#eventHeader");
+
+      heading = eventName + " " + eventDate;
+      tableContent = "";
+
+      for (var i=0;i<users.length; i++){
+            firstName = users[i].getElementsByTagName("first_name")[0].textContent;
+            lastName = users[i].getElementsByTagName("last_name")[0].textContent;
+            year = users[i].getElementsByTagName("year")[0].textContent;
+            email = users[i].getElementsByTagName("email")[0].textContent;
+            dorm = users[i].getElementsByTagName("dorm")[0].textContent;
+
+            tableContent += "<tr><td>" + i + "</td><td>" + lastName + "</td><td>" + firstName + "</td><td>" + year + "</td><td>" + email + "</td><td>" + dorm + "</td></tr>";
+      }
+
+      $(header).html(heading);
+      $(table).html(tableContent);
+
+      $('#eventModal').modal('toggle');
 }

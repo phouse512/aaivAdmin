@@ -10,3 +10,8 @@
 tbody tr:hover td.hasRowSpan { 
     background-color: #E6E6F5;   /* or whatever color you want */
 }
+
+.verticalSpace {
+	margin-top: 50px;
+	color: #FFFFFF;
+}

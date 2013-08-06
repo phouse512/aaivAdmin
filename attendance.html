@@ -17,10 +17,6 @@
                         displayModalEvents();
                     });
 
-                    $("#selectEvent").click(function(event){
-                        alert("hi");
-                    });
-
                     $("#selectEvent").delegate("tr", "click", function(){
                         if ($(".selectedEvent")[0]){
                             $(".selectedEvent").removeClass('selectedEvent');
@@ -28,6 +24,10 @@
                         } else {
                             $(this).addClass('selectedEvent');
                         }
+                    });
+
+                    $("#buttonChooseEvent").click(function(event){
+                        selectEvent();
                     });
                 });
             </script>
@@ -47,6 +47,7 @@
             <div class="row">
 
                 <div class="col-lg-2">
+                    <div class="verticalSpace">HIHIHI</div>
                     <div class="centered">
                         <a data-toggle="modal" href="#eventModal" class="btn btn-primary btn-lg">choose event..</a> 
                     </div>
@@ -54,7 +55,7 @@
 
                 
                 <div class="col-lg-8">
-                    <h3>Focus 7-12-13</h3>
+                    <h3 id="eventHeader">Focus 7-12-13</h3>
                     <hr>
                     <div class="bs-example">
                         <table class="table table-hover">
@@ -68,7 +69,7 @@
                                 <th>Dorm</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="eventTable">
                               <tr>
                                 <td>1</td>
                                 <td>House</td>
@@ -103,7 +104,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Select Event</button>
+                        <button type="button" class="btn btn-primary" id="buttonChooseEvent">Select Event</button>
                       </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
