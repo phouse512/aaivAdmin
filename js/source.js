@@ -53,8 +53,7 @@ function getAttendanceData(eventID){
             },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus);
-            }
-            
+            } 
       });
 }
 
@@ -85,9 +84,37 @@ function displayAttendance(xmlInfo){
 
             tableContent += "<tr><td>" + i + "</td><td>" + lastName + "</td><td>" + firstName + "</td><td>" + year + "</td><td>" + email + "</td><td>" + dorm + "</td></tr>";
       }
-
       $(header).html(heading);
       $(table).html(tableContent);
 
       $('#eventModal').modal('toggle');
+}
+
+function setLogout(){
+      $.ajax({
+            url: 'script/getUser.php',
+            type: 'GET',
+            async: false,
+            success: function(data, textStatus, xhr){
+                  console.log(data);
+                  var logout = "Log out - " + data;
+                  $("#logoutButton").html(logout);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus);
+            } 
+      });
+}
+
+
+function logout(){
+      $.ajax({
+            url: 'script/logoutUser.php',
+            type: 'GET',
+            success: function(data, textStatus, xhr){
+                  if (data == "destroyed"){
+                        window.location.replace("http://nuaaiv.com/aaivAdmin/attendance.php");
+                  }
+            }
+      })
 }

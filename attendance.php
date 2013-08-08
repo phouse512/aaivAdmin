@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if (!$_SESSION["valid_user"]) {
+        // User not logged in, redirect to login page
+        Header("Location: login.php");
+    }
+?>
+
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -29,6 +38,11 @@
                     $("#buttonChooseEvent").click(function(event){
                         selectEvent();
                     });
+
+                    setLogout();
+                    $("#logoutButton").click(function(event){
+                        logout();
+                    })
                 });
             </script>
         </head>
@@ -41,7 +55,7 @@
                     <li><a href="events.html">Manage Events</a></li>
                     <li><a href="users.html">Manage Users</a></li>
                 </ul>
-                <button type="button" class="btn btn-default navbar-btn pull-right">Sign In</button>
+                <button id="logoutButton" type="button" class="btn btn-default navbar-btn pull-right">Sign In</button>
             </div>
             
             <div class="row">

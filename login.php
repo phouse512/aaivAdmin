@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if ($_SESSION["valid_user"]) {
+        // User not logged in, redirect to login page
+        Header("Location: attendance.php");
+    }
+?>
+
 <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -8,10 +17,15 @@
             <link href="css/style.css" rel="stylesheet" media="screen">
             <script src="http://code.jquery.com/jquery.js"></script>
             <script src="js/bootstrap.min.js"></script>
-            <script src="js/source.js"></script>
+            <script src="js/login.js"></script>
 
             <script>
-
+                $(document).ready(function() {
+                    $("#loginButton").click(function(event){
+                        event.preventDefault();
+                        submitLogin();
+                    });
+                });
             </script>
         </head>
         
@@ -21,13 +35,13 @@
                     <div class="container">
                         <form class="form-horizontal well">
                             
-                            <div class="form-group verticalSpace2">
+                            <div id="usernameFG" class="form-group verticalSpace2">
                                 <div class="col-lg-10 col-lg-offset-1">
                                     <input type="text" class="form-control" id="inputUser" placeholder="username..">
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div id="passwordFG" class="form-group">
                                 <div class="col-lg-10 col-lg-offset-1">
                                     <input type="password" class="form-control" id="inputPassword" placeholder="password..">
                                 </div>
@@ -35,7 +49,7 @@
 
                             <div class="form-group verticalSpace">
                                 <div class="col-lg-10 col-lg-offset-1">
-                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                    <button id="loginButton" type="submit" class="btn btn-primary btn-block">Sign in</button>
                                 </div>
                             </div>
                         </form>

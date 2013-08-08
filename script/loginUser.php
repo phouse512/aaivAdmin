@@ -2,23 +2,21 @@
 	session_start();
 
 	$username = $_POST['userName'];
-	$pw = $_POST['password']
+	$pw = $_POST['password'];
 	
 	$connection = mysqli_connect('localhost', 'nuaaivco_event', 'pmh518', 'nuaaivco_events');
 
-	$query = "SELECT * FROM admins WHERE username = '" . $username . "' " . "AND password = '" . $pw . "' LIMIT 1";
+	$query = "SELECT * FROM admins WHERE username = '" . $username . "' AND password = '" . $pw . "' LIMIT 1";
 	$res = mysqli_query($connection, $query);
-	$rows = mysqli_fetch_array($res, MYSQLI_ASSOC);
-
-	
+	$rows = mysqli_fetch_array($res, MYSQLI_ASSOC);	
 
 	if (mysqli_num_rows($res) == 1){
 		//login successful
 		$_SESSION["valid_id"] = $rows['admin_id'];
-		$_SESSION["valid_user"] = $rows['username'];
+		$_SESSION["valid_user"] = $username;
 		$_SESSION["valid_time"] = time();
 
-		Header("Location: ../attendance.html");
+		echo "success";
 	} else {
 		echo "fail";
 	}
