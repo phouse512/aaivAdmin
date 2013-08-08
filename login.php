@@ -47,7 +47,7 @@
                                 </div>
                             <div>
 
-                            <div class="form-group verticalSpace">
+                            <div class="form-group verticalSpace3">
                                 <div class="col-lg-10 col-lg-offset-1">
                                     <button id="loginButton" type="submit" class="btn btn-primary btn-block">Sign in</button>
                                 </div>

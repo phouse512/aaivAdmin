@@ -26,17 +26,14 @@
                         displayModalEvents();
                     });
 
-                    $("#selectEvent").delegate("tr", "click", function(){
-                        if ($(".selectedEvent")[0]){
-                            $(".selectedEvent").removeClass('selectedEvent');
-                            $(this).addClass('selectedEvent');
-                        } else {
-                            $(this).addClass('selectedEvent');
-                        }
-                    });
-
                     $("#buttonChooseEvent").click(function(event){
                         selectEvent();
+                    });
+                    $('#sidebar-wrapper').width($("#sidebar").width());
+                    autoloadEvent();
+
+                    $('#sortOption').click(function(event){
+                        sortAttendance();
                     });
 
                     setLogout();
@@ -48,7 +45,7 @@
         </head>
         
         <body>
-            <div class="navbar">
+            <div class="navbar navbar-fixed-top">
                 <a class="navbar-brand" href="#">AAIV Attendance</a>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Manage Attendance</a></li>
@@ -60,16 +57,30 @@
             
             <div class="row">
 
-                <div class="col-lg-2">
-                    <div class="verticalSpace">HIHIHI</div>
-                    <div class="centered">
-                        <a data-toggle="modal" href="#eventModal" class="btn btn-primary btn-lg">choose event..</a> 
+                <div id="sidebar-wrapper" class="col-lg-2">
+                    <div data-spy="affix" data-offset-top="50" data-offset-bottom="100" id="sidebar">
+                        <div class="verticalSpace2">hi</div>
+                        <h4 id="eventHeader" class="centered">Focus</h4>
+                        <hr>
+                        <div class="centered">
+                            <a data-toggle="modal" href="#eventModal" class="btn btn-primary">choose event..</a> 
+                        </div>
+                        <div class="centered verticalSpace">
+                            <div class="btn-group">
+                                <button id="sortDropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    sort by.. <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a id="sort-1" class="sortOption" href="#">registration</a></li>
+                                    <li><a id="sort-2" class="sortOption" href="#">first name</a></li>
+                                    <li><a id="sort-3" class="sortOption" href="#">last name</a></li>
+                                    <li><a id="sort-4" class="sortOption" href="#">year</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                
-                <div class="col-lg-8">
-                    <h3 id="eventHeader">Focus 7-12-13</h3>
+                <div class="col-lg-8"> 
                     <hr>
                     <div class="bs-example">
                         <table class="table table-hover">
@@ -84,25 +95,8 @@
                               </tr>
                             </thead>
                             <tbody id="eventTable">
-                              <tr>
-                                <td>1</td>
-                                <td>House</td>
-                                <td>Phil</td>
-                                <td>Junior</td>
-                                <td>philhouse2015@u.northwestern.edu</td>
-                                <td>Sargent</td>
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>Chang</td>
-                                <td>Rich</td>
-                                <td>Senior</td>
-                                <td>changboy@gmail.com</td>
-                                <td>Park Evanston</td>
-                              </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div> 

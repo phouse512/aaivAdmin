@@ -1,3 +1,6 @@
+var sortOption = 0;
+var eventID;
+
 function displayModalEvents(){
       $.ajax({
             url: 'script/eventListModal.php',
@@ -6,8 +9,8 @@ function displayModalEvents(){
                   var events = data.getElementsByTagName("event");
                   var modalHTML = '<table class ="table table-hover"> <thead> <tr> <th>#</th><th>Event</th><th>Date</th></tr></thead><tbody id="selectEvent">';
                   var current = 0;
-
-                  for (var i=0;i<events.length; i++){
+                  
+                  for(var i=0;i<events.length; i++){
                         event_ID = events[i].getElementsByTagName("event_id")[0].textContent;
                         name = events[i].getElementsByTagName("event_name")[0].textContent;
                         date = events[i].getElementsByTagName("event_date")[0].textContent;
@@ -49,6 +52,7 @@ function getAttendanceData(eventID){
             async: false,
             data: ({eventID: eventID}),
             success: function(data, textStatus, xhr){
+                  displayEventHeader(data);
                   displayAttendance(data);
             },
             error: function(xhr, textStatus, errorThrown){
@@ -60,19 +64,21 @@ function getAttendanceData(eventID){
 function selectEvent(){
       var eventID = $("tr.selectedEvent").attr("id");
       getAttendanceData(eventID);
+      $('#eventModal').modal('toggle');
+}
+
+function displayEventHeader(xmlInfo){
+      var eventName = xmlInfo.getElementsByTagName("event_name")[0].textContent;
+      var eventDate = xmlInfo.getElementsByTagName("event_date")[0].textContent;
+
+      header = $("#eventHeader");
+      heading = eventName + " " + eventDate;
+      $(header).html(heading);
 }
 
 function displayAttendance(xmlInfo){
       var users = xmlInfo.getElementsByTagName("user");
-      var eventName = xmlInfo.getElementsByTagName("event_name")[0].textContent;
-      var eventDate = xmlInfo.getElementsByTagName("event_date")[0].textContent;
-      console.log(eventName);
-      console.log(users);
-
       table = $("#eventTable");
-      header = $("#eventHeader");
-
-      heading = eventName + " " + eventDate;
       tableContent = "";
 
       for (var i=0;i<users.length; i++){
@@ -84,10 +90,7 @@ function displayAttendance(xmlInfo){
 
             tableContent += "<tr><td>" + i + "</td><td>" + lastName + "</td><td>" + firstName + "</td><td>" + year + "</td><td>" + email + "</td><td>" + dorm + "</td></tr>";
       }
-      $(header).html(heading);
       $(table).html(tableContent);
-
-      $('#eventModal').modal('toggle');
 }
 
 function setLogout(){
@@ -96,7 +99,6 @@ function setLogout(){
             type: 'GET',
             async: false,
             success: function(data, textStatus, xhr){
-                  console.log(data);
                   var logout = "Log out - " + data;
                   $("#logoutButton").html(logout);
             },
@@ -118,3 +120,18 @@ function logout(){
             }
       })
 }
+
+function autoloadEvent(){
+      $.ajax({
+            url: 'script/getLatestEvent.php',
+            type: 'GET',
+            success: function(data, textStatus, xhr){
+                  getAttendanceData(data);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus);
+            },
+            async: false
+      });
+}
+
