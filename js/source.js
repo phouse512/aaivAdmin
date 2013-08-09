@@ -63,18 +63,23 @@ function getAttendanceData(eventID){
 }
 
 function selectEvent(){
+      $('#eventTable').fadeOut("slow");
       var eventID = $("tr.selectedEvent").attr("id");
       getAttendanceData(eventID);
       $('#eventModal').modal('toggle');
+      $('#eventTable').fadeIn("slow");
 }
 
 function displayEventHeader(xmlInfo){
 	
       var eventName = xmlInfo.getElementsByTagName("event_name")[0].textContent;
       var eventDate = xmlInfo.getElementsByTagName("event_date")[0].textContent;
+      var eventID = xmlInfo.getElementsByTagName("event_id")[0].textContent;
 
       header = $("#eventHeader");
       heading = eventName + " " + eventDate;
+      $(header).attr("id", eventID);
+
       $(header).html(heading);
 }
 
@@ -132,6 +137,30 @@ function autoloadEvent(){
             },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus);
+            },
+            async: false
+      });
+}
+
+function refreshAttendance(){
+      $("#eventTable").fadeOut("fast");
+
+      var sortOption = $(".glyphicon", "#sortDropdownDiv").parent().attr("id");
+      var siftOption = $(".glyphicon", "#siftDropdownDiv").parent().attr("id");
+      var eventID = $("h4").attr("id");
+      
+      $.ajax({
+            url: 'script/returnSortedAttendance.php',
+            type: 'POST',
+            data: ({eventID: eventID,
+                    sortOption: sortOption,
+                    siftOption: siftOption}),
+            success: function(data, textStatus, xhr){
+                  displayAttendance(data);
+                  $("#eventTable").fadeIn("slow");
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus + " " + errorThrown);
             },
             async: false
       });

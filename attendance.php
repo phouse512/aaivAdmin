@@ -15,6 +15,7 @@
             <!-- Bootstrap -->
             <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
             <link href="css/style.css" rel="stylesheet" media="screen">
+            <link rel="stylesheet" href="css/bootstrap-glyphicons.css"></link>
             <script src="http://code.jquery.com/jquery.js"></script>
             <script src="js/bootstrap.min.js"></script>
             <script src="js/source.js"></script>
@@ -32,14 +33,22 @@
                     $('#sidebar-wrapper').width($("#sidebar").width());
                     autoloadEvent();
 
-                    $('#sortOption').click(function(event){
-                        sortAttendance();
+                    $('#sortDropdownDiv').delegate("li", "click", function(event) {
+                        $("span", "#sortDropdownDiv").removeClass("glyphicon glyphicon-ok pull-left");
+                        $("span", this).addClass("glyphicon glyphicon-ok pull-left");
+                        refreshAttendance();
+                    });
+
+                    $('#siftDropdownDiv').delegate("li > a", "click", function(event){
+                        $("span", "#siftDropdownDiv").removeClass("glyphicon glyphicon-ok pull-left");
+                        $("span", this).addClass("glyphicon glyphicon-ok pull-left");
+                        refreshAttendance();
                     });
 
                     setLogout();
                     $("#logoutButton").click(function(event){
                         logout();
-                    })
+                    });
                 });
             </script>
         </head>
@@ -66,15 +75,33 @@
                             <a data-toggle="modal" href="#eventModal" class="btn btn-primary">choose event..</a> 
                         </div>
                         <div class="centered verticalSpace">
-                            <div class="btn-group">
-                                <button id="sortDropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <div id="sortDropdownDiv" class="btn-group">
+                                <button id="sortDropdown" type="button" class="customDropdown btn btn-default dropdown-toggle " data-toggle="dropdown">
                                     sort by.. <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a id="sort-1" class="sortOption" href="#">registration</a></li>
-                                    <li><a id="sort-2" class="sortOption" href="#">first name</a></li>
-                                    <li><a id="sort-3" class="sortOption" href="#">last name</a></li>
-                                    <li><a id="sort-4" class="sortOption" href="#">year</a></li>
+                                    <li><a id="sort-1" class="sortOption" href="#"><span class="glyphicon glyphicon-ok pull-left"></span>registration</a></li>
+                                    <li><a id="sort-2" class="sortOption" href="#"><span></span>first name</a></li>
+                                    <li><a id="sort-3" class="sortOption" href="#"><span></span>last name</a></li>
+                                    <li><a id="sort-4" class="sortOption" href="#"><span></span>year</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="centered verticalSpace">
+                            <div id="siftDropdownDiv" class="btn-group">
+                                <button id="siftDropdown" type="button" class="customDropdown btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    sift.. <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a id="sift-default" class="siftOption" href="#"><span class="glyphicon glyphicon-ok pull-left"></span>All</a></li>
+                                    <li class="divider"></li>
+                                    <li><a id="sift-1" class="siftOption" href="#"><span></span>Freshman</a></li>
+                                    <li><a id="sift-2" class="siftOption" href="#"><span></span>Sophomore</a></li>
+                                    <li><a id="sift-3" class="siftOption" href="#"><span></span>Junior</a></li>
+                                    <li><a id="sift-4" class="siftOption" href="#"><span></span>Senior</a></li>
+                                    <li><a id="sift-5" class="siftOption" href="#"><span></span>Other</a></li>
+                                    <li class="divider"></li>
+                                    <li><a id="sift-6" class="siftOption" href="#"><span></span>New Visitors</a></li>
                                 </ul>
                             </div>
                         </div>
