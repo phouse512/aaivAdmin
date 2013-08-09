@@ -52,6 +52,7 @@ function getAttendanceData(eventID){
             async: false,
             data: ({eventID: eventID}),
             success: function(data, textStatus, xhr){
+				  console.log(data);
                   displayEventHeader(data);
                   displayAttendance(data);
             },
@@ -68,6 +69,7 @@ function selectEvent(){
 }
 
 function displayEventHeader(xmlInfo){
+	
       var eventName = xmlInfo.getElementsByTagName("event_name")[0].textContent;
       var eventDate = xmlInfo.getElementsByTagName("event_date")[0].textContent;
 

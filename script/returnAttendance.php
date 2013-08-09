@@ -11,6 +11,8 @@
 
 	$xml = new XMLWriter();
 
+	header('Content-type: text/xml');
+	
 	$xml->openURI("php://output");
 	$xml->startDocument();
 	$xml->setIndent(true);
@@ -60,12 +62,11 @@
 		$xml->startElement("dorm");
 		$xml->writeRaw($row2['dorm']);
 		$xml->endElement();
-
 	    $xml->endElement();
 	}
 	$xml->endElement();
 	$xml->endElement();
-	header('Content-type: text/xml');
+
 	$xml->flush();
 
 
