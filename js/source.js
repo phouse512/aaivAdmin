@@ -166,3 +166,35 @@ function refreshAttendance(){
       });
 }
 
+function createEvent(){
+      var eventName = $("#inputEventName").val();
+      var eventDate = $("#datePicker").val();
+
+      $.ajax({
+            url: 'script/createEvent.php',
+            type: 'POST',
+            data: ({eventName: eventName,
+                    eventDate: eventDate}),
+            success: function(data, textStatus, xhr){
+                  $("#inputEventName").val("");
+                  $("#datePicker").val("");
+                  displayEventCreationSuccess(data);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus + " " + errorThrown);
+            },
+            async: false
+      });
+}
+
+function displayEventCreationSuccess(eventID){
+      alert = $("#eventInsertSuccess");
+
+      $(alert).html("You have successfully created a new event with the id: " + eventID + '<a class="close" href="#">&times;</a>');
+      $(alert).addClass("in");
+
+      $(".close").click(function(event){
+            $(alert).removeClass("in");
+      });
+}
+

@@ -58,7 +58,7 @@
                 <a class="navbar-brand" href="#">AAIV Attendance</a>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Manage Attendance</a></li>
-                    <li><a href="events.html">Manage Events</a></li>
+                    <li><a href="events.php">Manage Events</a></li>
                     <li><a href="users.html">Manage Users</a></li>
                 </ul>
                 <button id="logoutButton" type="button" class="btn btn-default navbar-btn pull-right">Sign In</button>
