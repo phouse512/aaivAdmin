@@ -35,6 +35,22 @@
                     event.preventDefault();
                     createEvent();
                 });
+
+                displayEventDelete();
+
+                $("#deleteEventButton").click(function(event){
+                    var eventID = $("tr.selectedEvent", "#tabs-pane3").attr("id");
+                    if(typeof eventID != "undefined") {
+                        var name = $("td.selectedEvent:eq(1)", "#tabs-pane3").html();
+                        var date = $("td.selectedEvent:eq(2)", "#tabs-pane3").html();
+                        $("#eventModalBody").html("<p>Are you sure you would like to delete the event <strong>'" + name + " " + date + "'</strong>? All changes are permanent and cannot be undone.</p>")
+                        $("#eventDeleteModal").modal('show');
+                    }   
+                });
+
+                $("#buttonDeleteEvent").click(function(event){
+                    deleteSelectedEvent();
+                });
             });
         </script>
     </head>
@@ -94,13 +110,40 @@
                 </div>
 
                 <div class="tab-pane" id="tabs-pane2">
-                    hi
+
                 </div>
 
                 <div class="tab-pane" id="tabs-pane3">
-                    under construction
+                    <div class="col-lg-6">
+                        <div id="eventSelectDelete" class="verticalSpace3 centered container well">
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <button id="deleteEventButton" type="submit" class="btn btn-danger btn-lg pull-right">Delete Event</button>
+                            </div>
+                        </div>
+                        <div id="eventDeleteSuccess" class="alert alert-success fade verticalSpace">
+                            
+                            <a class="close" href="#">&times;</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="eventDeleteModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirm</h4>
+                  </div>
+                  <div class="modal-body" id="eventModalBody">
+                    <p>Are you sure you would like to delete the event? Changes are permanent and cannot be undone.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="buttonDeleteEvent">Delete Event</button>
+                  </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </body>
 </html>

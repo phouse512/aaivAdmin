@@ -6,41 +6,61 @@ function displayModalEvents(){
             url: 'script/eventListModal.php',
             type: 'GET',
             success: function(data, textStatus, xhr){
-                  var events = data.getElementsByTagName("event");
-                  var modalHTML = '<table class ="table table-hover"> <thead> <tr> <th>#</th><th>Event</th><th>Date</th></tr></thead><tbody id="selectEvent">';
-                  var current = 0;
-                  
-                  for(var i=0;i<events.length; i++){
-                        event_ID = events[i].getElementsByTagName("event_id")[0].textContent;
-                        name = events[i].getElementsByTagName("event_name")[0].textContent;
-                        date = events[i].getElementsByTagName("event_date")[0].textContent;
-                        current = i+1;
-                        modalHTML += '<tr id="' + event_ID + '"><td>' + current + '</td><td>' + name + '</td><td>' + date + '</td></tr>';
-                  }
-
-                  modalHTML += '</tbody></table>';
-
-                  $('#eventModalBody').html(modalHTML);
-
-                  $("#selectEvent").delegate("tr", "click", function(){
-                        if ($(this).children(".selectedEvent")[0]) {
-                              $(".selectedEvent").removeClass('selectedEvent');
-                              $(".hasRowSpan").removeClass('hasRowSpan');   
-                        } else if ($(".selectedEvent")[0]){
-                              $(".selectedEvent").removeClass('selectedEvent');
-                              $(this).children().addClass('selectedEvent');
-                              $(this).addClass('selectedEvent');
-                              $(".hasRowSpan").removeClass('hasRowSpan');
-                              $(this).children().addClass('hasRowSpan');
-                        } else {
-                              $(this).children().addClass('selectedEvent');
-                              $(this).addClass('selectedEvent');
-                              $(this).children().addClass('hasRowSpan');
-                        }
-                  });
+                  var tableLocation = $('#eventModalBody');
+                  displayEventsTable(tableLocation, data);
             },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus);
+            }
+      });
+}
+
+function displayEventDelete(){
+      $.ajax({
+            url: 'script/eventListModal.php',
+            type: 'GET',
+            success: function(data, textStatus, xhr){
+                  var tableLocation = $('#eventSelectDelete');
+                  $("table", tableLocation).remove();
+                  displayEventsTable(tableLocation, data);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus);
+            }
+      });
+}
+
+function displayEventsTable(tableLocation, data){
+      var events = data.getElementsByTagName("event");
+      var tableHTML = '<table class ="table table-hover"> <thead> <tr> <th>#</th><th>Event</th><th>Date</th></tr></thead><tbody id="selectEvent">';
+      var current = 0;
+      
+      for(var i=0;i<events.length; i++){
+            event_ID = events[i].getElementsByTagName("event_id")[0].textContent;
+            name = events[i].getElementsByTagName("event_name")[0].textContent;
+            date = events[i].getElementsByTagName("event_date")[0].textContent;
+            current = i+1;
+            tableHTML += '<tr id="' + event_ID + '"><td>' + current + '</td><td>' + name + '</td><td>' + date + '</td></tr>';
+      }
+
+      tableHTML += '</tbody></table>';
+
+      $(tableLocation).prepend(tableHTML);
+
+      $("#selectEvent").delegate("tr", "click", function(){
+            if ($(this).children(".selectedEvent")[0]) {
+                  $(".selectedEvent").removeClass('selectedEvent');
+                  $(".hasRowSpan").removeClass('hasRowSpan');   
+            } else if ($(".selectedEvent")[0]){
+                  $(".selectedEvent").removeClass('selectedEvent');
+                  $(this).children().addClass('selectedEvent');
+                  $(this).addClass('selectedEvent');
+                  $(".hasRowSpan").removeClass('hasRowSpan');
+                  $(this).children().addClass('hasRowSpan');
+            } else {
+                  $(this).children().addClass('selectedEvent');
+                  $(this).addClass('selectedEvent');
+                  $(this).children().addClass('hasRowSpan');
             }
       });
 }
@@ -115,7 +135,6 @@ function setLogout(){
       });
 }
 
-
 function logout(){
       $.ajax({
             url: 'script/logoutUser.php',
@@ -179,6 +198,7 @@ function createEvent(){
                   $("#inputEventName").val("");
                   $("#datePicker").val("");
                   displayEventCreationSuccess(data);
+                  displayEventDelete();
             },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus + " " + errorThrown);
@@ -196,5 +216,37 @@ function displayEventCreationSuccess(eventID){
       $(".close").click(function(event){
             $(alert).removeClass("in");
       });
+}
+
+function displayEventDeletionSuccess(eventID){
+      alert = $("#eventDeleteSuccess");
+
+      $(alert).html("You have successfully deleted the event with id: <strong>" + eventID + '</strong>! <a class="close" href="#">&times;</a>');
+      $(alert).addClass("in");
+
+      $(".close").click(function(event){
+            $(alert).removeClass("in");
+      });
+}
+
+function deleteSelectedEvent(){
+      var eventID = $("tr.selectedEvent", "#tabs-pane3").attr("id");
+
+      $.ajax({
+            url: 'script/deleteEvent.php',
+            type: 'POST',
+            data: ({eventID: eventID}),
+            success: function(data, textStatus, errorThrown){
+                  if(data == "success"){
+                        displayEventDeletionSuccess(eventID);
+                  }
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus + " " + errorThrown);
+            },
+            async: false
+      });
+      displayEventDelete();
+      $("#eventDeleteModal").modal('hide');
 }
 
