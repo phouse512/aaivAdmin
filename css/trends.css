@@ -1,0 +1,182 @@
+.indicators-single {
+    font-family: 'Roboto';
+	padding-top: 8px;
+	padding-left: 20px;
+	font-size: 40px;
+	color: white;
+}
+
+.indicators-multiple {
+	font-family: 'Roboto';
+	padding-top: 23px;
+	padding-left: 3px;
+	font-size: 22px;
+	color: white;
+}
+
+.indicators-new {
+	font-family: 'Roboto';
+	padding-top: 22px;
+	padding-left: 12px;
+	color: white;
+	font-size: 25px;
+}
+
+#circle {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #fF0000;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    opacity: .85
+}
+
+#circle:hover {
+    top: 45px;
+    background: #FF0000;
+    opacity: .65;
+}
+
+#circle2 {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #fF0000;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    text-align: center;
+    opacity: .75;
+}
+
+#circle2:hover {
+    top: 45px;
+    background: #FF0000;
+    opacity: .55;
+}
+
+#circle3 {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #fF0000;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    opacity: .65
+}
+
+#circle3:hover {
+    top: 45px;
+    background: #FF0000;
+    opacity: .45;
+}
+
+#circle4 {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #fF0000;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    opacity: .45
+}
+
+#circle4:hover {
+    top: 45px;
+    opacity: .25;
+}
+
+/*   Newcomers          */
+#circle-new {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #024EE8;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    opacity: .65;
+}
+
+#circle-new:hover {
+    top: 45px;
+    opacity: .45;
+}
+
+/*   Positive Circles   */
+#circle5 {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #29AA01;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    opacity: .45;
+}
+
+#circle5:hover {
+    top: 45px;
+    opacity: .25;
+}
+
+#circle6 {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #29AA01;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    opacity: .65;
+}
+
+#circle6:hover {
+    top: 45px;
+    opacity: .45;
+}
+
+#circle7 {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #29AA01;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    opacity: .75;
+}
+
+#circle7:hover {
+    top: 45px;
+    opacity: .55;
+}
+
+#circle8 {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    background: #29AA01;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-transition: all .5s;
+    opacity: .85;
+}
+
+#circle8:hover {
+    top: 45px;
+    opacity: .65;
+}

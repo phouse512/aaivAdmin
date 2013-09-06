@@ -68,3 +68,7 @@ body {
 .dropdown-menu {
 	min-width: 150px;
 }
+
+.datepicker {
+	z-index: 1151;
+}

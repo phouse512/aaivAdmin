@@ -59,7 +59,8 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Manage Attendance</a></li>
                     <li><a href="events.php">Manage Events</a></li>
-                    <li><a href="users.html">Manage Users</a></li>
+                    <li><a href="users.php">Manage Users</a></li>
+                    <li><a href="trends.php">View Trends</a></li>
                 </ul>
                 <button id="logoutButton" type="button" class="btn btn-default navbar-btn pull-right">Sign In</button>
             </div>
@@ -69,7 +70,7 @@
                 <div id="sidebar-wrapper" class="col-lg-2">
                     <div data-spy="affix" data-offset-top="50" data-offset-bottom="100" id="sidebar">
                         <div class="verticalSpace2">hi</div>
-                        <h4 id="eventHeader" class="centered">Focus</h4>
+                        <h4 id="eventHeader" class="centered eventHeader">Focus</h4>
                         <hr>
                         <div class="centered">
                             <a data-toggle="modal" href="#eventModal" class="btn btn-primary">choose event..</a> 
@@ -135,7 +136,7 @@
                         <h4 class="modal-title">choose event..</h4>
                       </div>
                       <div class="modal-body" id="eventModalBody">
-                        <p>One fine body&hellip;</p>
+                        
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
