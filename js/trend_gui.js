@@ -25,6 +25,56 @@ function test2(eventID){
 	});
 }
 
+function getStreakData(eventID){
+	$.ajax({
+	    url: 'script/getStreaks.php',
+	    type: 'POST',
+        data: ({eventID: eventID}),
+	    success: function(data, textStatus, xhr){
+	    	console.log(data);
+	    	displayStreakData(data);
+	    },
+	    error: function(xhr, textStatus, errorThrown){
+			alert(textStatus + " " + errorThrown);
+	    },
+	    async: false
+	});
+}
+
+function displayStreakData(streakData){
+	var streaks = streakData.getElementsByTagName("streak");
+	var tableBodyHTML;
+	var panelClass = ".panel";
+	var tempPanelClass;
+
+	for (var i=0; i<streaks.length; i++){
+		tableBodyHTML = buildUserTable(streaks[i]);
+		var tempPanelClass = panelClass + (i+1).toString();
+		$(tempPanelClass).find("tbody").html(tableBodyHTML);
+	}
+}
+
+function buildUserTable(data){
+	var users = data.getElementsByTagName("user");
+
+
+	//fix offset columns!
+	var tableBodyHTML = "";
+	if(users.length > 0){
+		for(var i=0; i < users.length; i++){
+		    user_ID = users[i].getElementsByTagName("user_id")[0].textContent;
+		    firstName = users[i].getElementsByTagName("first_name")[0].textContent;
+		    lastName = users[i].getElementsByTagName("last_name")[0].textContent;
+		    year = users[i].getElementsByTagName("year")[0].textContent;
+		    email = users[i].getElementsByTagName("email")[0].textContent;
+		    dorm = users[i].getElementsByTagName("dorm")[0].textContent;
+
+		    tableBodyHTML += '<tr id="' + user_ID + '"><td>' + lastName + '</td><td>' + firstName + '</td><td>' + year + '</td><td>' + email + '</td><td>' + dorm + '</td></tr>';
+		}
+	}
+	return tableBodyHTML;
+}
+
 function buildPanel(streak_data, streak_group){
 	var users = streak_data.getElementsByTagName("users");
 	var tableHTML;
@@ -56,7 +106,6 @@ function setPanelOffsets(){
 		tempCircleClass = circleClass + i.toString();
 		offset = $(tempCircleClass).offset();
 		$(tempPanelClass).css('left', offset.left - 25);
-
 	}
 
 	for (var i=5; i<=8; i++){
