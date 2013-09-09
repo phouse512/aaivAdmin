@@ -1,6 +1,28 @@
 function test(hello){
+	$.ajax({
+	    url: 'script/streakAnalysis.php',
+	    type: 'GET',
+	    success: function(data, textStatus, xhr){
+	    	console.log(data);
+	    },
+	    error: function(xhr, textStatus, errorThrown){
+			alert(textStatus);
+	    }
+	});
+}
 
-	console.log(hello);
+function test2(eventID){
+	$.ajax({
+	    url: 'script/getStreaks.php',
+	    type: 'POST',
+        data: ({eventID: eventID}),
+	    success: function(data, textStatus, xhr){
+	    	console.log(data);
+	    },
+	    error: function(xhr, textStatus, errorThrown){
+			alert(textStatus + " " + errorThrown);
+	    }
+	});
 }
 
 function buildPanel(streak_data, streak_group){
@@ -22,8 +44,6 @@ function buildPanel(streak_data, streak_group){
 
 	    tableHTML += '<tr id="' + user_ID + '"><td>' + lastName + '</td><td>' + firstName + '</td><td>' + year + '</td><td>' + email + '</td><td>' + dorm + '</td></tr>';
 	}
-
-
 }
 
 function setPanelOffsets(){
