@@ -1,0 +1,5 @@
+[08-Sep-2013 21:30:49 America/New_York] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Empty query in /home/nuaaivco/public_html/aaivAdmin/script/streakAnalysis.php on line 18
+[08-Sep-2013 21:30:49 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/nuaaivco/public_html/aaivAdmin/script/streakAnalysis.php on line 22
+[08-Sep-2013 21:32:45 America/New_York] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Empty query in /home/nuaaivco/public_html/aaivAdmin/script/streakAnalysis.php on line 7
+[08-Sep-2013 21:32:45 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/nuaaivco/public_html/aaivAdmin/script/streakAnalysis.php on line 11
+[09-Sep-2013 13:21:02 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/nuaaivco/public_html/aaivAdmin/script/streakAnalysis.php on line 25
