@@ -47,6 +47,12 @@
                     clearSelectedPanels();
                     $('#eventModal').modal('toggle');
                 });
+
+                $('#eventModal').on('hidden.bs.modal', function () {
+                    setTimeout(function () {
+                        setPanelOffsets();
+                    }, 500);
+                });
             });
         </script>
     </head>
@@ -99,7 +105,7 @@
  
         <div class="panel1 offset panel-notselected left-side">
             <div class="panel panel-default removeBottomMargin">
-                <div class="panel-heading">Streak Group</div>
+                <div class="panel-heading"><strong>Attendance Streak:</strong> 6 or more missed events</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -126,7 +132,7 @@
         </div>            
         <div class="panel2 offset panel-notselected left-side">
             <div class="panel panel-default removeBottomMargin">
-                <div class="panel-heading">Streak Group</div>
+                <div class="panel-heading"><strong>Attendance Streak:</strong> between 3 and 5 missed events</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -153,7 +159,7 @@
         </div>
         <div class="panel3 offset panel-notselected left-side">
             <div class="panel panel-default removeBottomMargin">
-                <div class="panel-heading">Streak Group</div>
+                <div class="panel-heading"><strong>Attendance Streak:</strong> 2 missed events</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -180,7 +186,7 @@
         </div>
         <div class="panel4 offset panel-notselected left-side">
             <div class="panel panel-default removeBottomMargin">
-                <div class="panel-heading">Streak Group</div>
+                <div class="panel-heading"><strong>Attendance Streak:</strong> 1 missed event</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -207,7 +213,7 @@
         </div>
         <div class="panel5 offset panel-notselected right-side">
             <div class="panel panel-default removeBottomMargin">
-                <div class="panel-heading">Streak Group</div>
+                <div class="panel-heading"><strong>Attendance Streak:</strong> 1 attended</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -234,7 +240,7 @@
         </div>
         <div class="panel6 offset panel-notselected right-side">
             <div class="panel panel-default removeBottomMargin">
-                <div class="panel-heading">Streak Group</div>
+                <div class="panel-heading"><strong>Attendance Streak:</strong> 2 events attended</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -261,7 +267,7 @@
         </div>
         <div class="panel7 offset panel-notselected right-side">
             <div class="panel panel-default removeBottomMargin">
-                <div class="panel-heading">Streak Group</div>
+                <div class="panel-heading"><strong>Attendance Streak:</strong> 3 to 5 attended events</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -288,7 +294,34 @@
         </div>
         <div class="panel8 offset panel-notselected right-side">
             <div class="panel panel-default removeBottomMargin">
-                <div class="panel-heading">Streak Group</div>
+                <div class="panel-heading"><strong>Attendance Streak:</strong> 6 or more attended events aka "the regulars"</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Year</th>
+                            <th>Email</th>
+                            <th>Dorm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>    
+                            <td>2</td>
+                            <td>House</td>
+                            <td>Phil</td>
+                            <td>Junior</td>
+                            <td>philhosue</td>
+                            <td>Sargent</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel-new offset panel-notselected new">
+            <div class="panel panel-default removeBottomMargin">
+                <div class="panel-heading"><strong>Newcomers:</strong> talk to these peeps</div>
                 <table class="table">
                     <thead>
                         <tr>
