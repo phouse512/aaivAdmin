@@ -35,6 +35,18 @@
                 setPanelOffsets();
                 circleListeners();
                 circlePopups();
+
+                $('[data-toggle="modal"]').click(function(e) {
+                    e.preventDefault();
+                    displayModalEvents();
+                });
+
+                $('#buttonChooseEvent').click(function(e) {
+                    var eventID = $("tr.selectedEvent").attr("id");
+                    getStreakData(eventID);
+                    clearSelectedPanels();
+                    $('#eventModal').modal('toggle');
+                });
             });
         </script>
     </head>
@@ -52,7 +64,7 @@
         </div>
         <div class="row verticalSpace2">
             <div class="col-lg-4 pull-right">
-                <button class="pull-right btn btn-large btn-primary">Choose Event</button>
+                <a data-toggle="modal" href="#eventModal" class="btn-large pull-right btn btn-primary">choose event..</a> 
             </div>
         </div>
         <div class="row">
@@ -301,5 +313,23 @@
                 </table>
             </div>
         </div>
+
+        <div class="modal fade" id="eventModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">choose event..</h4>
+                  </div>
+                  <div class="modal-body" id="eventModalBody">
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="buttonChooseEvent">Select Event</button>
+                  </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </body>
 </html>

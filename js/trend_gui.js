@@ -57,7 +57,6 @@ function displayStreakData(streakData){
 function buildUserTable(data){
 	var users = data.getElementsByTagName("user");
 
-
 	//fix offset columns!
 	var tableBodyHTML = "";
 	if(users.length > 0){
@@ -69,7 +68,7 @@ function buildUserTable(data){
 		    email = users[i].getElementsByTagName("email")[0].textContent;
 		    dorm = users[i].getElementsByTagName("dorm")[0].textContent;
 
-		    tableBodyHTML += '<tr id="' + user_ID + '"><td>' + lastName + '</td><td>' + firstName + '</td><td>' + year + '</td><td>' + email + '</td><td>' + dorm + '</td></tr>';
+		    tableBodyHTML += '<tr id="' + user_ID + '"><td>' + (i+1) + '</td><td>' + lastName + '</td><td>' + firstName + '</td><td>' + year + '</td><td>' + email + '</td><td>' + dorm + '</td></tr>';
 		}
 	}
 	return tableBodyHTML;
@@ -122,6 +121,11 @@ function circlePopups(){
 		tempCircleClass = circleClass + i.toString();
 		$(tempCircleClass).tooltip({'placement' : 'top'});
 	}
+}
+
+function clearSelectedPanels(){
+	$(".panel-selected").addClass("panel-notselected");
+	$(".panel-selected").removeClass("panel-selected");
 }
 
 function circleListeners() {
