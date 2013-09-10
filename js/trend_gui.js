@@ -11,20 +11,6 @@ function test(hello){
 	});
 }
 
-function test2(eventID){
-	$.ajax({
-	    url: 'script/getStreaks.php',
-	    type: 'POST',
-        data: ({eventID: eventID}),
-	    success: function(data, textStatus, xhr){
-	    	console.log(data);
-	    },
-	    error: function(xhr, textStatus, errorThrown){
-			alert(textStatus + " " + errorThrown);
-	    }
-	});
-}
-
 function getStreakData(eventID){
 	$.ajax({
 	    url: 'script/getStreaks.php',
@@ -48,14 +34,21 @@ function displayStreakData(streakData){
 	var tempPanelClass;
 
 	for (var i=0; i<streaks.length; i++){
+		updatePopupText((i+1), streaks[i].getElementsByTagName("user").length);
 		tableBodyHTML = buildUserTable(streaks[i]);
 		var tempPanelClass = panelClass + (i+1).toString();
 		$(tempPanelClass).find("tbody").html(tableBodyHTML);
 	}
+
+	//implementation for 9th panel - new users
+	var newUsers = streakData.getElementsByTagName("new_users");
+	tableBodyHTML = buildUserTable(newUsers[0]);
+	$(".panel-new").find("tbody").html(tableBodyHTML);
 }
 
 function buildUserTable(data){
 	var users = data.getElementsByTagName("user");
+	console.log(data);
 
 	//fix offset columns!
 	var tableBodyHTML = "";
@@ -74,25 +67,13 @@ function buildUserTable(data){
 	return tableBodyHTML;
 }
 
-function buildPanel(streak_data, streak_group){
-	var users = streak_data.getElementsByTagName("users");
-	var tableHTML;
-	var panelHTML;
-	var current = 0;
-
-	panelHTML = '<div class="panel panel-default"><div class="panel-heading">';
-	panelHTML += 'Streak ' + streak_group + '</div><table class="table table-hover"><thead><'
-
-	for(var i=0; i < users.length; i++){
-	    user_ID = users[i].getElementsByTagName("user_id")[0].textContent;
-	    firstName = users[i].getElementsByTagName("first_name")[0].textContent;
-	    lastName = users[i].getElementsByTagName("last_name")[0].textContent;
-	    year = users[i].getElementsByTagName("year")[0].textContent;
-	    email = users[i].getElementsByTagName("email")[0].textContent;
-	    dorm = users[i].getElementsByTagName("dorm")[0].textContent;
-
-	    tableHTML += '<tr id="' + user_ID + '"><td>' + lastName + '</td><td>' + firstName + '</td><td>' + year + '</td><td>' + email + '</td><td>' + dorm + '</td></tr>';
+function updatePopupText(iteration, userNumber){
+	var circleClass = "#circle" + iteration.toString();
+	var outputString = userNumber.toString() + " Users";
+	if(userNumber == 1){
+		outputString = userNumber.toString() + " User";
 	}
+	$(circleClass).attr("data-original-title", outputString);
 }
 
 function setPanelOffsets(){
@@ -113,6 +94,9 @@ function setPanelOffsets(){
 		offset = $(tempCircleClass).offset();
 		$(tempPanelClass).css('left', offset.left - 700);
 	}
+
+	newOffset = $("#circle-new").offset();
+	$(".panel-new").css('left', offset.left - 700);
 }
 
 function circlePopups(){
@@ -129,6 +113,14 @@ function clearSelectedPanels(){
 }
 
 function circleListeners() {
+	$("#circle-new").on("click", function(){
+		$(".panel-selected").addClass("panel-notselected");
+		$(".panel-selected").removeClass("panel-selected");
+		$(".panel-new").addClass("panel-selected");
+		$(".panel-new").removeClass("panel-notselected");
+		$(".clicked").removeClass("clicked");
+		$(this).addClass("clicked");
+	});
 	$("#circle1").on("click", function() {
 		$(".panel-selected").addClass("panel-notselected");
 		$(".panel-selected").removeClass("panel-selected");

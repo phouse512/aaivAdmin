@@ -78,6 +78,44 @@
 	}
 
 	$xml->endElement();
+
+	$new_user_sql = "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND first_time='1'";
+	$new_user_res = mysqli_query($connection, $new_user_sql);
+
+	$xml->startElement("new_users");
+	$xml->startElement("users");
+
+	while($row3 = mysqli_fetch_array($new_user_res, MYSQLI_ASSOC)) {
+		$xml->startElement("user");
+
+	    $xml->startElement("user_id");
+	    $xml->writeRaw($row3['user_id']);
+	    $xml->endElement();
+
+	    $xml->startElement("first_name");
+	    $xml->writeRaw($row3['first_name']);
+	    $xml->endElement();
+
+	    $xml->startElement("last_name");
+	    $xml->writeRaw($row3['last_name']);
+	    $xml->endElement();
+
+	    $xml->startElement("year");
+	    $xml->writeRaw($row3['year']);
+	    $xml->endElement();
+
+		$xml->startElement("email");
+		$xml->writeRaw($row3['email']);
+		$xml->endElement();
+
+		$xml->startElement("dorm");
+		$xml->writeRaw($row3['dorm']);
+		$xml->endElement();
+	    $xml->endElement();
+	}
+	$xml->endElement();
+	$xml->endElement();
+
 	$xml->endElement();
 
 	$xml->flush();
