@@ -7,14 +7,10 @@ function displayModalEvents(){
             type: 'GET',
             success: function(data, textStatus, xhr){
                   var tableLocation = $('#eventModalBody');
-<<<<<<< HEAD
                   $("table", tableLocation).remove();
                   displayEventsTable(tableLocation, data);
                   listenerLocation = $("#selectEvent", tableLocation);
                   addEventTableListener(listenerLocation);
-=======
-                  displayEventsTable(tableLocation, data);
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
             },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus);
@@ -30,11 +26,9 @@ function displayEventDelete(){
                   var tableLocation = $('#eventSelectDelete');
                   $("table", tableLocation).remove();
                   displayEventsTable(tableLocation, data);
-<<<<<<< HEAD
+
                   listenerLocation = $("#selectEvent", tableLocation);
                   addEventTableListener(listenerLocation);
-=======
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
             },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus);
@@ -42,7 +36,6 @@ function displayEventDelete(){
       });
 }
 
-<<<<<<< HEAD
 function displayEventEdit(){
       $.ajax({
             url: 'script/eventListModal.php',
@@ -60,8 +53,6 @@ function displayEventEdit(){
       })
 }
 
-=======
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
 function displayEventsTable(tableLocation, data){
       var events = data.getElementsByTagName("event");
       var tableHTML = '<table class ="table table-hover"> <thead> <tr> <th>#</th><th>Event</th><th>Date</th></tr></thead><tbody id="selectEvent">';
@@ -78,15 +69,10 @@ function displayEventsTable(tableLocation, data){
       tableHTML += '</tbody></table>';
 
       $(tableLocation).prepend(tableHTML);
-<<<<<<< HEAD
 }
 
 function addEventTableListener(divLocation){
       $(divLocation).delegate("tr", "click", function(){
-=======
-
-      $("#selectEvent").delegate("tr", "click", function(){
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
             if ($(this).children(".selectedEvent")[0]) {
                   $(".selectedEvent").removeClass('selectedEvent');
                   $(".hasRowSpan").removeClass('hasRowSpan');   
@@ -182,7 +168,7 @@ function logout(){
             type: 'GET',
             success: function(data, textStatus, xhr){
                   if (data == "destroyed"){
-                        window.location.replace("http://nuaaiv.com/aaivAdmin/attendance.php");
+                        window.location.replace("http://nuaaiv.com/aaivAdmin/");
                   }
             }
       });
@@ -241,10 +227,7 @@ function createEvent(){
                   $("#datePicker").val("");
                   displayEventCreationSuccess(data);
                   displayEventDelete();
-<<<<<<< HEAD
                   displayEventEdit();
-=======
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
             },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus + " " + errorThrown);
@@ -333,7 +316,6 @@ function editSelectedEvent(){
       $("#eventEditModal").modal('hide');
 }
 
-<<<<<<< HEAD
 /*
 
 
@@ -427,7 +409,6 @@ function addPaginationListeners(paginationDiv, currentPage, pageSize, searchStri
 }
 
 
-=======
 function displayEventDeletionSuccess(eventID){
       alert = $("#eventDeleteSuccess");
 
@@ -459,5 +440,3 @@ function deleteSelectedEvent(){
       displayEventDelete();
       $("#eventDeleteModal").modal('hide');
 }
-
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965

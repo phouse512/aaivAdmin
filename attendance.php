@@ -55,7 +55,7 @@
         
         <body>
             <div class="navbar navbar-fixed-top">
-                <a class="navbar-brand" href="#">AAIV Attendance</a>
+                <a class="navbar-brand" href="./">AAIV Attendance</a>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Manage Attendance</a></li>
                     <li><a href="events.php">Manage Events</a></li>

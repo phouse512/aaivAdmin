@@ -38,10 +38,7 @@
                 });
 
                 displayEventDelete();
-<<<<<<< HEAD
                 displayEventEdit();
-=======
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
 
                 $("#deleteEventButton").click(function(event){
                     var eventID = $("tr.selectedEvent", "#tabs-pane3").attr("id");
@@ -53,7 +50,6 @@
                     }   
                 });
 
-<<<<<<< HEAD
                 $("#editEventButton").click(function(event){
                     var eventID = $("tr.selectedEvent", "#tabs-pane2").attr("id");
                     if(typeof eventID != "undefined") {
@@ -72,18 +68,17 @@
                 $("#buttonEditEvent").click(function(event){
                     editSelectedEvent();
                 });
-=======
+
                 $("#buttonDeleteEvent").click(function(event){
                     deleteSelectedEvent();
                 });
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
             });
         </script>
     </head>
     
     <body>
         <div class="navbar navbar-fixed-top">
-            <a class="navbar-brand" href="#">AAIV Attendance</a>
+            <a class="navbar-brand" href="./">AAIV Attendance</a>
             <ul class="nav navbar-nav">
                 <li><a href="attendance.php">Manage Attendance</a></li>
                 <li class="active"><a href="#">Manage Events</a></li>
@@ -137,7 +132,6 @@
                 </div>
 
                 <div class="tab-pane" id="tabs-pane2">
-<<<<<<< HEAD
                     <div class="col-lg-6">
                         <div id="eventSelectEdit" class="verticalSpace3 centered container well">
                             <div class="col-lg-10 col-lg-offset-1">
@@ -149,9 +143,6 @@
                             <a id="editClose" class="close" href="#">&times;</a>
                         </div>
                     </div>
-=======
-
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
                 </div>
 
                 <div class="tab-pane" id="tabs-pane3">
@@ -162,12 +153,11 @@
                             </div>
                         </div>
                         <div id="eventDeleteSuccess" class="alert alert-success fade verticalSpace">
-                            
-<<<<<<< HEAD
+                    
                             <a id="deleteClose" class="close" href="#">&times;</a>
-=======
+
                             <a class="close" href="#">&times;</a>
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
+
                         </div>
                     </div>
                 </div>
@@ -190,7 +180,6 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-<<<<<<< HEAD
 
         <div class="modal fade" id="eventEditModal">
             <div class="modal-dialog">
@@ -222,7 +211,5 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-=======
->>>>>>> a93351d8a1dfce359288d972ec6b378b8f6df965
     </body>
 </html>

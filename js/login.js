@@ -36,7 +36,7 @@ function login(username, password){
 				password: password}),
 		success: function(data, textStatus, xhr){
 			if (data == "success"){
-				window.location.replace("http://nuaaiv.com/aaivAdmin/attendance.php");
+				window.location.replace("http://nuaaiv.com/aaivAdmin");
 			}
 		},
 		error: function(xhr, textStatus, errorThrown){

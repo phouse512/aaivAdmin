@@ -85,20 +85,5 @@
 	}
 
 	echo $iterations;
-	/*
-	trends queries:
-
-query 1 - get list of event id's, sorted by date asc 
-"SELECT event_id FROM events ORDER BY event_date ASC"
-
-create event array using array_push($arr, new val); with id's in respective places
-
-query 2 - get list of user id's, sort by last_name asc
-"SELECT user_id FROM users ORDER BY last_name ASC"
-
-	$query = "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "'";
-e
- loop through all users
-*/
 ?>
 
