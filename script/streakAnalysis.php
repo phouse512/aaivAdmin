@@ -44,7 +44,7 @@
 	$iterations = 0;
 
 	foreach($user_array as $val){
-		$custom_event_sql = "SELECT events.event_id, COALESCE(attendance.status, 0) status FROM events LEFT JOIN attendance ON events.event_id=attendance.event_id AND attendance.user_id='" . $val . "' ORDER BY events.event_date ASC";		
+		$custom_event_sql = "SELECT events.event_id, IFNULL(attendance.status, 0) status FROM events LEFT JOIN attendance ON events.event_id=attendance.event_id AND attendance.user_id='" . $val . "' ORDER BY events.event_date ASC";		
 		$custom_event_res = mysqli_query($connection, $custom_event_sql);
 
 		$past_attendance = -1;
@@ -57,26 +57,27 @@
 					$past_attendance = $row3['status'];
 				} else {
 					$current_streak = -1;
-					$past_attendance = $row3['status'];
+					$past_attendance = 0;
 				}
-			} else if ($past_attendance == $row3['status']){
-				if($row3['status'] == 1){
+			} else if ($row3['status'] == 1){
+				if($past_attendance == 1){
 					$current_streak += 1;
-					$past_attendance = $row3['status'];
+					$past_attendance = 1;
 				} else {
-					$current_streak -= 1;
-					$past_attendance = $row3['status'];
+					$current_streak = 1;
+					$past_attendance = 1;
 				}
 			} else {
-				if($row3['status'] == 1){
-					$current_streak = 1;
-					$past_attendance = $row3['status'];
+				if($past_attendance == 0){
+					$current_streak -= 1;
+					$past_attendance = 0;
 				} else {
 					$current_streak = -1;
-					$past_attendance = $row3['status'];
+					echo " streaK: " . $current_streak . " past attendance:" . $past_attendance . " and row" . $row['status'] . " ";
+					$past_attendance = 0;
 				}
 			}			
-			$update_sql = "UPDATE attendance SET current_streak='" . streak_group($current_streak) . "' WHERE event_id='" . $row3['event_id'] . "' AND user_id='" . $val . "'";
+			$update_sql = "UPDATE attendance SET test_streak=" . $current_streak . " , current_streak='" . streak_group($current_streak) . "' WHERE event_id='" . $row3['event_id'] . "' AND user_id='" . $val . "'";
 			$update_res = mysqli_query($connection, $update_sql);
 
 			$iterations += 1;
