@@ -84,7 +84,18 @@
                                     </div><!-- /input-group -->
                                 </div>
                             </div>
-                            <div class="row verticalSpace">
+                            <div class="user-table">
+                                <div class="user-table-head">
+                                    <h2 class="first-fifth">Last Name</h2>
+                                    <h2 class="second-fifth">First Name</h2>
+                                    <h2 class="third-fifth">Year</h2>
+                                    <h2 class="fourth-fifth">Email</h2>
+                                    <h2 class="fifth-fifth">Dorm</h2>
+                                </div>
+                                <div class="user-table-data">
+                                </div>
+                            </div>
+                            <!--<div class="row verticalSpace">
                                 <div id="searchData" class="col-lg-10">
                                     <table class="table table-hover">
                                         <thead>
@@ -102,7 +113,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
 
                         </div>
