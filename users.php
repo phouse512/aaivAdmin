@@ -85,22 +85,22 @@
                                     </div><!-- /input-group -->
                                 </div>
                             </div>
-                            <div class="div-table">
-                                <div class="div-table-row">
+                            <ul class="div-table">
+                                <li class="div-table-row">
                                     <div class="div-table-col">Last Name</div>
                                     <div class="div-table-col">First Name</div>
                                     <div class="div-table-col">Year</div>
                                     <div class="div-table-col">Email</div>
                                     <div class="div-table-col">Dorm</div>
-                                </div>
-                                <div class="div-table-row">
+                                </li>
+                                <li class="div-table-row">
                                     <div class="div-table-col">Chang</div>
                                     <div class="div-table-col">Rich</div>
                                     <div class="div-table-col">1991</div>
                                     <div class="div-table-col">rich@gmail.com</div>
                                     <div class="div-table-col">hinman</div>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                             <!--<div class="row verticalSpace">
                                 <div id="searchData" class="col-lg-10">
                                     <table class="table table-hover">
