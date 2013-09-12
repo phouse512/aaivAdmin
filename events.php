@@ -61,9 +61,6 @@
                     }
                 });
 
-                $("#buttonDeleteEvent").click(function(event){
-                    deleteSelectedEvent();
-                });
 
                 $("#buttonEditEvent").click(function(event){
                     editSelectedEvent();
@@ -156,7 +153,7 @@
                     
                             <a id="deleteClose" class="close" href="#">&times;</a>
 
-                            <a class="close" href="#">&times;</a>
+                            <a id="deleteClose" class="close" href="#">&times;</a>
 
                         </div>
                     </div>

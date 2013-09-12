@@ -26,10 +26,8 @@ function displayEventDelete(){
                   var tableLocation = $('#eventSelectDelete');
                   $("table", tableLocation).remove();
                   displayEventsTable(tableLocation, data);
-
                   listenerLocation = $("#selectEvent", tableLocation);
-                  addEventTableListener(listenerLocation);
-            },
+                  addEventTableListener(listenerLocation);            },
             error: function(xhr, textStatus, errorThrown){
                   alert(textStatus);
             }
@@ -241,20 +239,8 @@ function displayEventCreationSuccess(eventID){
 
       $(alert).html("You have successfully created a new event with the id: <strong>" + eventID + '</strong>!<a id="createClose" class="close" href="#">&times;</a>');
       $(alert).addClass("in");
-      
       $("#createClose").click(function(event){
             $("#eventInsertSuccess").removeClass("in");
-      });
-}
-
-function displayEventDeletionSuccess(eventID){
-      alert = $("#eventDeleteSuccess");
-
-      $(alert).html("You have successfully deleted the event with id: <strong>" + eventID + '</strong>! <a id="deleteClose" class="close" href="#">&times;</a>');
-      $(alert).addClass("in");
-
-      $("#deleteClose").click(function(event){
-            $("#eventDeleteSuccess").removeClass("in");
       });
 }
 
@@ -412,11 +398,22 @@ function addPaginationListeners(paginationDiv, currentPage, pageSize, searchStri
 function displayEventDeletionSuccess(eventID){
       alert = $("#eventDeleteSuccess");
 
-      $(alert).html("You have successfully deleted the event with id: <strong>" + eventID + '</strong>! <a class="close" href="#">&times;</a>');
+      $(alert).html("You have successfully deleted the event with id: <strong>" + eventID + '</strong>! <a id="deleteClose" class="close" href="#">&times;</a>');
       $(alert).addClass("in");
 
-      $(".close").click(function(event){
-            $(alert).removeClass("in");
+      $("#deleteClose").click(function(event){
+            $("#eventDeleteSuccess").removeClass("in");
+      });
+}
+
+function displayEventEditSuccess(eventID, eventName, eventDate){
+      alert = $("#eventEditSuccess");
+
+      $(alert).html("You have successfully edited the event <strong>'" + eventName + " " + eventDate + "'</strong> with id: <strong>" + eventID + "</strong>!<a id='editClose' class='close' href='#'>&times;</a>");
+      $(alert).addClass("in");
+
+      $("#editClose").click(function(event){
+            $("#eventEditSuccess").removeClass("in");
       });
 }
 
@@ -438,5 +435,121 @@ function deleteSelectedEvent(){
             async: false
       });
       displayEventDelete();
+      displayEventEdit();                  
       $("#eventDeleteModal").modal('hide');
 }
+function editSelectedEvent(){
+      var eventID = $("tr.selectedEvent", "#tabs-pane2").attr("id");
+      var newEventName = $("#editEventName").val();
+      var newEventDate = $("#editDatePicker").val();
+      $.ajax({
+            url: 'script/editEvent.php',
+            type: 'POST',
+            data: ({eventID: eventID,
+                    newEventName: newEventName,
+                    newEventDate: newEventDate}),
+            success: function(data, textStatus, errorThrown){
+                  if(data == "success"){
+                        displayEventEditSuccess(eventID, newEventName, newEventDate);
+                  }
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus + " " + errorThrown);
+            },
+            async: false
+      });
+      displayEventEdit();
+      displayEventDelete();
+      $("#eventEditModal").modal('hide');
+}
+
+/*
+
+
+
+*/
+function paginationSearch(searchString, pageNumber, pageSize){
+      $.ajax({
+            url: 'script/paginationSearch.php',
+            type: 'POST',
+            data: ({searchTerm: searchString,
+                    pageSize: pageSize,
+                    requestedPageNumber: pageNumber}),
+            success: function(data, textStatus, errorThrown){
+                  $("#paginationUI").off("click");
+                  displayUserSearchResults(data);
+                  displayPaginationUI(data, pageNumber, pageSize, searchString);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                  alert(textStatus + " " + errorThrown);     
+            }
+      });
+}
+
+function displayUserSearchResults(data){
+      var users = data.getElementsByTagName("user");
+      var tableHTML;
+      var current = 0;
+
+      for(var i=0; i < users.length; i++){
+            user_ID = users[i].getElementsByTagName("user_id")[0].textContent;
+            firstName = users[i].getElementsByTagName("first_name")[0].textContent;
+            lastName = users[i].getElementsByTagName("last_name")[0].textContent;
+            year = users[i].getElementsByTagName("year")[0].textContent;
+            email = users[i].getElementsByTagName("email")[0].textContent;
+            dorm = users[i].getElementsByTagName("dorm")[0].textContent;
+
+            tableHTML += '<tr id="' + user_ID + '"><td>' + lastName + '</td><td>' + firstName + '</td><td>' + year + '</td><td>' + email + '</td><td>' + dorm + '</td></tr>';
+      }
+
+      $("#searchUsersResult").html(tableHTML);
+}
+
+function displayPaginationUI(data, pageNumber, pageSize, searchString){
+      currentPage = data.getElementsByTagName("currentPage")[0].textContent;
+      totalPages = data.getElementsByTagName("totalPages")[0].textContent;
+      pageSize = data.getElementsByTagName("page_size")[0].textContent;
+
+      var outputHTML = "";
+
+      if(totalPages <= 1){
+            outputHTML += "";
+      } else {
+            outputHTML += "<ul class='pagination'>";
+            if (currentPage == 1){
+                  outputHTML += "<li class='disabled'><a href='#'>&laquo;</a></li>";
+            } else {
+                  outputHTML += "<li class='previousPage'><a href='#'>&laquo;</a></li>";
+            }
+            for (var i=1; i<=totalPages; i++){
+                  if (i == currentPage){
+                        outputHTML += "<li class='active'><a href='#'>" + i + "</a></li>";
+                  } else {
+                        outputHTML += "<li><a href='#'>" + i + "</a></li>";
+                  }
+            }
+            if (currentPage == totalPages){
+                  outputHTML += "<li class='disabled'><a href='#'>&raquo;</a></li>";
+            } else {
+                  outputHTML += "<li class='nextPage'><a href='#'>&raquo;</a></li>"
+            }
+            outputHTML += "</ul>";
+      }
+      var paginationDiv = $("#paginationUI");
+      $(paginationDiv).html(outputHTML);
+      addPaginationListeners(paginationDiv, pageNumber, pageSize, searchString);
+}
+
+function addPaginationListeners(paginationDiv, currentPage, pageSize, searchString){
+      $(paginationDiv).on("click", "li", function(event){
+            if($(this).hasClass('previousPage')){
+                  paginationSearch(searchString, (currentPage-1), 10);
+            } else if ($(this).hasClass('nextPage')){
+                  paginationSearch(searchString, (currentPage+1), 10);
+            } else if ($(this).hasClass('disabled') || $(this).hasClass('active')){
+
+            } else {
+                  var val = parseInt($(this).children().text());
+                  paginationSearch(searchString, val, 10);
+            }
+      });

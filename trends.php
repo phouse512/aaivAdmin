@@ -35,6 +35,7 @@
                 setPanelOffsets();
                 circleListeners();
                 circlePopups();
+<<<<<<< HEAD
 
                 $('[data-toggle="modal"]').click(function(e) {
                     e.preventDefault();
@@ -53,13 +54,19 @@
                         setPanelOffsets();
                     }, 500);
                 });
+=======
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
             });
         </script>
     </head>
     
     <body>
         <div class="navbar navbar-fixed-top">
+<<<<<<< HEAD
             <a class="navbar-brand" href="./">AAIV Attendance</a>
+=======
+            <a class="navbar-brand" href="#">AAIV Attendance</a>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
             <ul class="nav navbar-nav">
                 <li><a href="attendance.php">Manage Attendance</a></li>
                 <li><a href="events.php">Manage Events</a></li>
@@ -69,11 +76,16 @@
             <button id="logoutButton" type="button" class="btn btn-default navbar-btn pull-right">Sign In</button>
         </div>
         <div class="row verticalSpace2">
+<<<<<<< HEAD
             <div class="col-lg-4 col-lg-offset-4">
                 <p class="trendsHeading">Event: None Selected</p>
             </div>
             <div class="col-lg-4 pull-right">
                 <a data-toggle="modal" href="#eventModal" class="btn-large pull-right btn btn-primary">choose event..</a> 
+=======
+            <div class="col-lg-4 pull-right">
+                <button class="pull-right btn btn-large btn-primary">Choose Event</button>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
             </div>
         </div>
         <div class="row">
@@ -108,7 +120,11 @@
  
         <div class="panel1 offset panel-notselected left-side">
             <div class="panel panel-default removeBottomMargin">
+<<<<<<< HEAD
                 <div class="panel-heading"><strong>Attendance Streak:</strong> 6 or more missed events</div>
+=======
+                <div class="panel-heading">Streak Group</div>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
                 <table class="table">
                     <thead>
                         <tr>
@@ -135,7 +151,11 @@
         </div>            
         <div class="panel2 offset panel-notselected left-side">
             <div class="panel panel-default removeBottomMargin">
+<<<<<<< HEAD
                 <div class="panel-heading"><strong>Attendance Streak:</strong> between 3 and 5 missed events</div>
+=======
+                <div class="panel-heading">Streak Group</div>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
                 <table class="table">
                     <thead>
                         <tr>
@@ -162,7 +182,11 @@
         </div>
         <div class="panel3 offset panel-notselected left-side">
             <div class="panel panel-default removeBottomMargin">
+<<<<<<< HEAD
                 <div class="panel-heading"><strong>Attendance Streak:</strong> 2 missed events</div>
+=======
+                <div class="panel-heading">Streak Group</div>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
                 <table class="table">
                     <thead>
                         <tr>
@@ -189,7 +213,11 @@
         </div>
         <div class="panel4 offset panel-notselected left-side">
             <div class="panel panel-default removeBottomMargin">
+<<<<<<< HEAD
                 <div class="panel-heading"><strong>Attendance Streak:</strong> 1 missed event</div>
+=======
+                <div class="panel-heading">Streak Group</div>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
                 <table class="table">
                     <thead>
                         <tr>
@@ -216,7 +244,11 @@
         </div>
         <div class="panel5 offset panel-notselected right-side">
             <div class="panel panel-default removeBottomMargin">
+<<<<<<< HEAD
                 <div class="panel-heading"><strong>Attendance Streak:</strong> 1 attended</div>
+=======
+                <div class="panel-heading">Streak Group</div>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
                 <table class="table">
                     <thead>
                         <tr>
@@ -243,7 +275,11 @@
         </div>
         <div class="panel6 offset panel-notselected right-side">
             <div class="panel panel-default removeBottomMargin">
+<<<<<<< HEAD
                 <div class="panel-heading"><strong>Attendance Streak:</strong> 2 events attended</div>
+=======
+                <div class="panel-heading">Streak Group</div>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
                 <table class="table">
                     <thead>
                         <tr>
@@ -268,9 +304,15 @@
                 </table>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="panel7 offset panel-notselected right-side">
             <div class="panel panel-default removeBottomMargin">
                 <div class="panel-heading"><strong>Attendance Streak:</strong> 3 to 5 attended events</div>
+=======
+        <div class="panel7 offset panel-selected right-side">
+            <div class="panel panel-default removeBottomMargin">
+                <div class="panel-heading">Streak Group</div>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
                 <table class="table">
                     <thead>
                         <tr>
@@ -297,7 +339,11 @@
         </div>
         <div class="panel8 offset panel-notselected right-side">
             <div class="panel panel-default removeBottomMargin">
+<<<<<<< HEAD
                 <div class="panel-heading"><strong>Attendance Streak:</strong> 6 or more attended events aka "the regulars"</div>
+=======
+                <div class="panel-heading">Streak Group</div>
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
                 <table class="table">
                     <thead>
                         <tr>
@@ -322,6 +368,7 @@
                 </table>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="panel-new offset panel-notselected new">
             <div class="panel panel-default removeBottomMargin">
                 <div class="panel-heading"><strong>Newcomers:</strong> talk to these peeps</div>
@@ -367,5 +414,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+=======
+>>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
     </body>
 </html>
