@@ -73,11 +73,12 @@
 					$past_attendance = 0;
 				} else {
 					$current_streak = -1;
-					echo " streaK: " . $current_streak . " past attendance:" . $past_attendance . " and row" . $row['status'] . " ";
+					//echo " streaK: " . $current_streak . " past attendance:" . $past_attendance . " and row" . $row['status'] . " ";
 					$past_attendance = 0;
 				}
-			}			
-			$update_sql = "UPDATE attendance SET test_streak=" . $current_streak . " , current_streak='" . streak_group($current_streak) . "' WHERE event_id='" . $row3['event_id'] . "' AND user_id='" . $val . "'";
+			}		
+			$temp_group = streak_group($current_streak);	
+			$update_sql = "INSERT INTO attendance (event_id, user_id, status, current_streak, streak_group) values(" . $row3['event_id'] . ", " . $val . ", 0, " . $current_streak . ", " . $temp_group . ") ON DUPLICATE KEY UPDATE current_streak=" . $current_streak . ", streak_group=" . $temp_group . "";
 			$update_res = mysqli_query($connection, $update_sql);
 
 			$iterations += 1;

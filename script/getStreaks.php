@@ -42,7 +42,7 @@
 
 		$xml->startElement('users');
 
-		$user_info_sql = "SELECT * FROM attendance LEFT JOIN users ON attendance.user_id=users.user_id WHERE attendance.current_streak = '" . $i ."'";
+		$user_info_sql = "SELECT * FROM attendance LEFT JOIN users ON attendance.user_id=users.user_id WHERE attendance.event_id = '" . $event_id . "' AND attendance.streak_group = '" . $i ."'";
 		$user_info_res = mysqli_query($connection, $user_info_sql);
 
 		while ($row2 = mysqli_fetch_array($user_info_res, MYSQLI_ASSOC)) {
