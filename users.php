@@ -16,6 +16,7 @@
             <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
             <link href="css/style.css" rel="stylesheet" media="screen">
             <link rel="stylesheet" href="css/bootstrap-glyphicons.css"></link>
+            <link rel="stylesheet" href="css/div-table.css"></link>
             <script src="http://code.jquery.com/jquery.js"></script>
             <script src="js/bootstrap.min.js"></script>
             <script src="js/source.js"></script>
@@ -84,15 +85,20 @@
                                     </div><!-- /input-group -->
                                 </div>
                             </div>
-                            <div class="user-table">
-                                <div class="user-table-head">
-                                    <h2 class="first-fifth">Last Name</h2>
-                                    <h2 class="second-fifth">First Name</h2>
-                                    <h2 class="third-fifth">Year</h2>
-                                    <h2 class="fourth-fifth">Email</h2>
-                                    <h2 class="fifth-fifth">Dorm</h2>
+                            <div class="div-table">
+                                <div class="div-table-row">
+                                    <div class="div-table-col">Last Name</div>
+                                    <div class="div-table-col">First Name</div>
+                                    <div class="div-table-col">Year</div>
+                                    <div class="div-table-col">Email</div>
+                                    <div class="div-table-col">Dorm</div>
                                 </div>
-                                <div class="user-table-data">
+                                <div class="div-table-row">
+                                    <div class="div-table-col">Chang</div>
+                                    <div class="div-table-col">Rich</div>
+                                    <div class="div-table-col">1991</div>
+                                    <div class="div-table-col">rich@gmail.com</div>
+                                    <div class="div-table-col">hinman</div>
                                 </div>
                             </div>
                             <!--<div class="row verticalSpace">
