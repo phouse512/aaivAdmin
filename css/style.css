@@ -1,5 +1,20 @@
+.circle-shadow {
+    -webkit-box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, .5);
+    margin-left: 8px;
+}
+
 .centered {
 	text-align: center;
+}
+
+.nolink {
+	color: #4c4c4c;
+	font-size: 70px;
+}
+
+.nolink:hover {
+	color: #4c4c4c;
+	text-decoration: none;
 }
 
 .selectedEvent {

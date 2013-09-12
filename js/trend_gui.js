@@ -157,9 +157,7 @@ function circleListeners() {
 		$(".clicked").removeClass("clicked");
 		$(this).addClass("clicked");
 	});
-}
 
-function circleListeners() {
 	$("#circle1").on("click", function() {
 		$(".panel-selected").addClass("panel-notselected");
 		$(".panel-selected").removeClass("panel-selected");
