@@ -40,10 +40,14 @@ function displayStreakData(streakData){
 		$(tempPanelClass).find("tbody").html(tableBodyHTML);
 	}
 
+	updatePopupText(9, streakData.getElementsByTagName("new_users")[0].getElementsByTagName("user").length);
+
 	//implementation for 9th panel - new users
 	var newUsers = streakData.getElementsByTagName("new_users");
 	tableBodyHTML = buildUserTable(newUsers[0]);
 	$(".panel-new").find("tbody").html(tableBodyHTML);
+
+	updateHeading(streakData.getElementsByTagName("event_name")[0].textContent, streakData.getElementsByTagName("event_date")[0].textContent);
 }
 
 function buildUserTable(data){
@@ -68,12 +72,21 @@ function buildUserTable(data){
 }
 
 function updatePopupText(iteration, userNumber){
-	var circleClass = "#circle" + iteration.toString();
+	if (iteration == 9){
+		circleClass = "#circle-new";
+	} else {
+		var circleClass = "#circle" + iteration.toString();
+	}
 	var outputString = userNumber.toString() + " Users";
 	if(userNumber == 1){
 		outputString = userNumber.toString() + " User";
 	}
 	$(circleClass).attr("data-original-title", outputString);
+}
+
+function updateHeading(eventName, eventDate){
+	outputString = "Event: " + eventName + " " + eventDate;
+	$(".trendsHeading").html(outputString);
 }
 
 function setPanelOffsets(){
@@ -96,7 +109,7 @@ function setPanelOffsets(){
 	}
 
 	newOffset = $("#circle-new").offset();
-	$(".panel-new").css('left', offset.left - 700);
+	$(".panel-new").css('left', newOffset.left - 277);
 }
 
 function circlePopups(){
@@ -105,6 +118,8 @@ function circlePopups(){
 		tempCircleClass = circleClass + i.toString();
 		$(tempCircleClass).tooltip({'placement' : 'top'});
 	}
+
+	$("#circle-new").tooltip({'placement' : 'top' });
 }
 
 function clearSelectedPanels(){

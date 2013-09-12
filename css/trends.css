@@ -4,6 +4,12 @@
     width: 800px;
 }
 
+p.trendsHeading {
+    color: #868686;
+    font-size: 25px;
+    font-weight: 800;
+}
+
 .tooltip{
     top: 12px !important;
     opacity: .85 !important;

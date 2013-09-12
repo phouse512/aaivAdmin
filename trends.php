@@ -69,6 +69,9 @@
             <button id="logoutButton" type="button" class="btn btn-default navbar-btn pull-right">Sign In</button>
         </div>
         <div class="row verticalSpace2">
+            <div class="col-lg-4 col-lg-offset-4">
+                <p class="trendsHeading">Event: None Selected</p>
+            </div>
             <div class="col-lg-4 pull-right">
                 <a data-toggle="modal" href="#eventModal" class="btn-large pull-right btn btn-primary">choose event..</a> 
             </div>
