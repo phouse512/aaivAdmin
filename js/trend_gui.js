@@ -11,18 +11,13 @@ function test(hello){
 	});
 }
 
-<<<<<<< HEAD
 function getStreakData(eventID){
-=======
-function test2(eventID){
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 	$.ajax({
 	    url: 'script/getStreaks.php',
 	    type: 'POST',
         data: ({eventID: eventID}),
 	    success: function(data, textStatus, xhr){
 	    	console.log(data);
-<<<<<<< HEAD
 	    	displayStreakData(data);
 	    },
 	    error: function(xhr, textStatus, errorThrown){
@@ -92,12 +87,6 @@ function updatePopupText(iteration, userNumber){
 function updateHeading(eventName, eventDate){
 	outputString = "Event: " + eventName + " " + eventDate;
 	$(".trendsHeading").html(outputString);
-=======
-	    },
-	    error: function(xhr, textStatus, errorThrown){
-			alert(textStatus + " " + errorThrown);
-	    }
-	});
 }
 
 function buildPanel(streak_data, streak_group){
@@ -119,7 +108,6 @@ function buildPanel(streak_data, streak_group){
 
 	    tableHTML += '<tr id="' + user_ID + '"><td>' + lastName + '</td><td>' + firstName + '</td><td>' + year + '</td><td>' + email + '</td><td>' + dorm + '</td></tr>';
 	}
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 }
 
 function setPanelOffsets(){
@@ -132,10 +120,6 @@ function setPanelOffsets(){
 		tempCircleClass = circleClass + i.toString();
 		offset = $(tempCircleClass).offset();
 		$(tempPanelClass).css('left', offset.left - 25);
-<<<<<<< HEAD
-=======
-
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 	}
 
 	for (var i=5; i<=8; i++){
@@ -144,12 +128,9 @@ function setPanelOffsets(){
 		offset = $(tempCircleClass).offset();
 		$(tempPanelClass).css('left', offset.left - 700);
 	}
-<<<<<<< HEAD
 
 	newOffset = $("#circle-new").offset();
 	$(".panel-new").css('left', newOffset.left - 277);
-=======
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 }
 
 function circlePopups(){
@@ -158,7 +139,6 @@ function circlePopups(){
 		tempCircleClass = circleClass + i.toString();
 		$(tempCircleClass).tooltip({'placement' : 'top'});
 	}
-<<<<<<< HEAD
 
 	$("#circle-new").tooltip({'placement' : 'top' });
 }
@@ -177,11 +157,9 @@ function circleListeners() {
 		$(".clicked").removeClass("clicked");
 		$(this).addClass("clicked");
 	});
-=======
 }
 
 function circleListeners() {
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 	$("#circle1").on("click", function() {
 		$(".panel-selected").addClass("panel-notselected");
 		$(".panel-selected").removeClass("panel-selected");

@@ -4,15 +4,12 @@
     width: 800px;
 }
 
-<<<<<<< HEAD
 p.trendsHeading {
     color: #868686;
     font-size: 25px;
     font-weight: 800;
 }
 
-=======
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 .tooltip{
     top: 12px !important;
     opacity: .85 !important;
@@ -87,7 +84,6 @@ p.trendsHeading {
     content: "";   
 }
 
-<<<<<<< HEAD
 .new:after {
     border-bottom: 20px solid #ddd;
     border-left: 20px solid transparent;
@@ -101,8 +97,6 @@ p.trendsHeading {
     content: "";  
 }
 
-=======
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 #circle1.clicked {
     left: 0px;
     top: 47px;
@@ -261,8 +255,6 @@ p.trendsHeading {
     -webkit-transition: all .25s;
 }
 
-=======
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 #circle-new {
     cursor: pointer;
     position: relative;

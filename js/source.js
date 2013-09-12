@@ -553,3 +553,4 @@ function addPaginationListeners(paginationDiv, currentPage, pageSize, searchStri
                   paginationSearch(searchString, val, 10);
             }
       });
+}

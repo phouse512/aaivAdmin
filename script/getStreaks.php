@@ -34,10 +34,6 @@
 	$xml->startElement('streaks');
 
 	for ($i=1; $i <= 8; $i++){
-<<<<<<< HEAD
-=======
-
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 		$xml->startElement('streak');
 
 		$xml->startElement('streak_group');
@@ -46,11 +42,8 @@
 
 		$xml->startElement('users');
 
-<<<<<<< HEAD
+
 		$user_info_sql = "SELECT * FROM attendance LEFT JOIN users ON attendance.user_id=users.user_id WHERE attendance.event_id = '" . $event_id . "' AND attendance.streak_group = '" . $i ."'";
-=======
-		$user_info_sql = "SELECT * FROM attendance LEFT JOIN users ON attendance.user_id=users.user_id WHERE attendance.current_streak = '" . $i ."'";
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 		$user_info_res = mysqli_query($connection, $user_info_sql);
 
 		while ($row2 = mysqli_fetch_array($user_info_res, MYSQLI_ASSOC)) {
@@ -86,7 +79,7 @@
 	}
 
 	$xml->endElement();
-<<<<<<< HEAD
+
 
 	$new_user_sql = "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND first_time='1'";
 	$new_user_res = mysqli_query($connection, $new_user_sql);
@@ -125,8 +118,6 @@
 	$xml->endElement();
 	$xml->endElement();
 
-=======
->>>>>>> 246ed2ab175400add39c04505cb1fcbc7f70a2ab
 	$xml->endElement();
 
 	$xml->flush();
