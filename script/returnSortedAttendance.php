@@ -7,25 +7,25 @@
 
 	switch ($sift) {
 		case "sift-default":
-			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "'";
+			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND attendance.status=1";
 			break;
 		case "sift-1":
-			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND year='freshman'";
+			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND attendance.status=1 AND year='freshman'";
 			break;
 		case "sift-2":
-			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND year='sophomore'";
+			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND attendance.status=1 AND year='sophomore'";
 			break;
 		case "sift-3":
-			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND year='junior'";
+			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND attendance.status=1 AND year='junior'";
 			break;
 		case "sift-4":
-			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND year='senior'";
+			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND attendance.status=1 AND year='senior'";
 			break;
 		case "sift-5":
-			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND year='other'";
+			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND attendance.status=1 AND year='other'";
 			break;
 		case "sift-6":
-			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND first_time='1'";
+			$query .= "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND attendance.status=1 AND first_time='1'";
 			break;
 	}
 

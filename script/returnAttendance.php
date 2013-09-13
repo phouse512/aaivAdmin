@@ -3,7 +3,7 @@
 
 	$connection = mysqli_connect('localhost', 'nuaaivco_event', 'pmh518', 'nuaaivco_events');
 
-	$query = "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "'";
+	$query = "SELECT * FROM attendance INNER JOIN users ON attendance.user_id=users.user_id WHERE event_id = '" . $event_id . "' AND attendance.status=1";
 	$res = mysqli_query($connection, $query);
 
 	$query2 = "SELECT * FROM events WHERE event_id = '" . $event_id . "'";

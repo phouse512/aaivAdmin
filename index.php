@@ -108,55 +108,79 @@
                             </div>
                         </div>
                     </div>';
+            } else {
+                echo '        <div class="row">
+                        <div class="col-lg-9 col-lg-offset-1 verticalSpace">
+                            <div style="padding-bottom: 35px; padding-top: 20px;" class="jumbotron">
+                                <h2 style="color: #3F3F3F;">Welcome to the AAIV Attendance Manager!</h2>
+                                <p class="text-muted" style="color: #5A5A5A;">You\'re all logged in and part of the club now! Go explore and see what you can do, and if you need any ideas or tips on where to start, look below!</p>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-1">
+                            <div class="media">
+                                <a class="pull-left nolink" href="attendance.php">
+                                    <span class="media-object glyphicon glyphicon-list"></span>
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">View attendance</h4>
+                                    <p>Interested in viewing attendance for your latest event? The \'Manage Attendance\' tab allows you to choose any event and view the attendance record. Interested? Navigate with the bar above or click on the icon on the left to get started.</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <a class="pull-left nolink" href="events.php">
+                                    <span class="media-object glyphicon glyphicon-calendar"></span>
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">View events</h4>
+                                    <p>Do you have a new event that you\'d like to track? The \'Manage Events\' tab allows for you to create, modify, and delete events from the database. Beware though, deleting an event also deletes any attendance associated with it!</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <a class="pull-left nolink" href="users.php">
+                                    <span class="media-object glyphicon glyphicon-user"></span>
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">View users</h4>
+                                    <p>Curious about somebody in your family group that you haven\'t seen in a while? Use the \'Manage Users\' tab to search for attendance records by person and see a detailed list of their attendance for the past few weeks. Remember, no stalking!</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <a class="pull-left nolink" href="trends.php">
+                                    <span class="media-object glyphicon glyphicon-sort-by-attributes"></span>
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">View trends</h4>
+                                    <p>Looking for the regulars, power-Focus-attendees, and maybe even the one-time visitors? Visit the \'View Trends\' tab to look at the attendance streaks at any point in time: just select an event to see all the hard calculations done for you!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading features-header">Coming Soon:</div>
+                                <div class="panel-body">
+                                    <p>AAIV-AM is currently in its beta, and while it is functional, there are still many features we\'d like to add, so here\'s a taste!</p>
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item">
+                                            <h4 class="list-group-item-heading">Excel Exports</h4>
+                                            <p class="list-group-item-text">Coming sometime very soon, we plan on adding the ability to export the current table as a .csv spreadsheet so others can view it.</p>
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                            <h4 class="list-group-item-heading">Browser Agnosticism</h4>
+                                            <p class="list-group-item-text">Currently this site is best viewed in Firefox or Chrome, but we\'ll be working on adding more cross-browser functionality.</p>
+                                        </a>
+                                        <a href="#" class="list-group-item">
+                                            <h4 class="list-group-item-heading">Family Group Ministry</h4>
+                                            <p class="list-group-item-text">Our long term goal is to integrate family group ministry statistics into this as well to make AAIV leaders\' lives easier!</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>';
             }
         ?>
-        <div class="row">
-            <div class="col-lg-9 col-lg-offset-1 verticalSpace">
-                <div style="padding-bottom: 35px; padding-top: 20px;" class="jumbotron">
-                    <h2 style="color: #3F3F3F;">Welcome to the AAIV Attendance Manager!</h2>
-                    <p class="text-muted" style="color: #5A5A5A;">You're all logged in and part of the club now! Go explore and see what you can do, and if you need any ideas or tips on where to start, look below!</p>
-                </div>  
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-1">
-                <div class="media">
-                    <a class="pull-left nolink" href="attendance.php">
-                        <span class="media-object glyphicon glyphicon-list"></span>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">View attendance</h4>
-                        <p>Interested in viewing attendance for your latest event? The 'Manage Attendance' tab allows you to choose any event and view the attendance record. Interested? Navigate with the bar above or click on the icon on the left to get started.</p>
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-right nolink" href="events.php">
-                        <span class="media-object glyphicon glyphicon-calendar"></span>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">View events</h4>
-                        <p>Do you have a new event that you'd like to track? The 'Manage Events' tab allows for you to create, modify, and delete events from the database. Beware though, deleting an event also deletes any attendance associated with it!</p>
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left nolink" href="users.php">
-                        <span class="media-object glyphicon glyphicon-user"></span>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">View users</h4>
-                        <p>Curious about somebody in your family group that you haven't seen in a while? Use the 'Manage Users' tab to search for attendance records by person and see a detailed list of their attendance for the past few weeks. Remember, no stalking!</p>
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-right nolink" href="trends.php">
-                        <span class="media-object glyphicon glyphicon-sort-by-attributes"></span>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">View trends</h4>
-                        <p>Looking for the regulars, power-Focus-attendees, and maybe even the one-time visitors? Visit the 'View Trends' tab to look at the attendance streaks at any point in time: just select an event to see all the hard calculations done for you!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </body>
 </html>
